@@ -1,4 +1,4 @@
-find_package(Git)
+find_package(Git REQUIRED)
 
 execute_process(COMMAND ${GIT_EXECUTABLE} describe --abbrev=6 --dirty --always --tags
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}

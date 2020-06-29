@@ -37,7 +37,6 @@ configure_file(
     "${CMAKE_BINARY_DIR}/conf/config.h"
 )
 
-
 # 
 # Project description and (meta) information
 # 
@@ -57,6 +56,16 @@ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the build type (Debug/Release)" FORCE)
 endif (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "C flags, Debug configuration: ${CMAKE_C_FLAGS_DEBUG}")
+message(STATUS "C flags, Release configuration: ${CMAKE_C_FLAGS_RELEASE}")
+message(STATUS "C flags, Release configuration with Debug info: ${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+message(STATUS "C flags, minimal Release configuration: ${CMAKE_C_FLAGS_MINSIZEREL}")
+message(STATUS "C++ flags, Debug configuration: ${CMAKE_CXX_FLAGS_DEBUG}")
+message(STATUS "C++ flags, Release configuration: ${CMAKE_CXX_FLAGS_RELEASE}")
+message(STATUS "C++ flags, Release configuration with Debug info: ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+message(STATUS "C++ flags, minimal Release configuration: ${CMAKE_CXX_FLAGS_MINSIZEREL}")
+
 # Set runtime path
 set(CMAKE_SKIP_BUILD_RPATH            FALSE) # Add absolute path to all dependencies for BUILD
 set(CMAKE_BUILD_WITH_INSTALL_RPATH    FALSE) # Use CMAKE_INSTALL_RPATH for INSTALL
@@ -68,6 +77,7 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # Do NOT add path to dependencies f
 # add_subdirectory(src)
 add_executable(project_template src/main.cpp)
 
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 if (BUILD_TESTS)
     include(CTest)
     enable_testing()
